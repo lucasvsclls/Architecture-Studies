@@ -9,15 +9,13 @@ import Combine
 class UserViewModel: ObservableObject {
     @Published var user = User(name: "guilejrme", age: 21, email: "@gmail.com")
     
-    func setName(newName: String) {
-        user.name = newName
+    func set<Value>(_ keyPath: WritableKeyPath<User, Value>, to newValue: Value) {
+        user[keyPath: keyPath] = newValue
     }
     
-    func setAge(newAge: Int) {
-        user.age = newAge
-    }
-    
-    func setEmail(newEmail: String) {
-        user.email = newEmail
+    func updateProfile(name: String, age: Int, email: String){
+        set(\.name, to: name)
+        set(\.age, to: age)
+        set(\.email, to: email)
     }
 }
