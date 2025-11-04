@@ -1,4 +1,4 @@
-import Cocoa
+import Cocoa // Nesse arquivo implementei Composite B)
 
 protocol Component {
     func execute()
